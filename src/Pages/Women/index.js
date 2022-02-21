@@ -18,7 +18,7 @@ const Women = (props) => {
     <div className="wrapper">
       <div className="container">
         <div className="page-title">
-          <h1>Women page</h1>
+          <h1>Women</h1>
         </div>
         <div className="row">
           {products.map((product, pos) => {
