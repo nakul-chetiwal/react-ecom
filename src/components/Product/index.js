@@ -25,24 +25,29 @@ const Product = (props) => {
             <div className="col-md-4">
               <div className="product p-4">
                 <div className="mt-4 mb-3">
-                  <span className="text-uppercase mt-5 d-block">
+                  <span className="text-uppercase d-block mt-5">
                     <h2>{name}</h2>
                   </span>
-                  <span className="text-uppercase text-muted mt-5 d-block">
+                  <span className="text-uppercase text-muted d-block mt-5">
                     <h3>{brand}</h3>
                   </span>
                   {attributes.map((attribute) => (
-                    <div className="mt-5 d-block" key={attribute.id}>
+                    <div className="d-block mt-5" key={attribute.id}>
                       <h3 className="text-uppercase">{attribute.name}</h3>
+
                       {attribute.items.map((item) => (
                         <label className="radio" key={item.id}>
-                          <input type="radio" name="size" value={item.value} />
+                          <input
+                            type="radio"
+                            name={attribute.name}
+                            value={item.value}
+                          />
                           <span>{item.displayValue}</span>
                         </label>
                       ))}
                     </div>
                   ))}
-                  <div className="price mt-5 d-block">
+                  <div className="price d-block mt-5">
                     <h3 className="text-uppercase">Prize:</h3>
                     <span className="">
                       {prices[0].currency.symbol}
@@ -51,7 +56,7 @@ const Product = (props) => {
                   </div>
                 </div>
 
-                <div className="cart mt-5 align-items-center">
+                <div className="cart align-items-center mt-5">
                   <Button onClick={addToCart}>Add to cart</Button>
                 </div>
                 <div className="about mt-5">{renderHTML(description)}</div>
