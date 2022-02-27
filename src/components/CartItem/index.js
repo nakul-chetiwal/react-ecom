@@ -17,7 +17,7 @@ function CartItem(props) {
           <h2>{props.cartItem.name}</h2>
         </span>
         <span className="text-uppercase text-muted d-block mt-2">
-          <h3>{props.cartItem.name}</h3>
+          <h3>{props.cartItem.brand}</h3>
         </span>
         <span className="text-uppercase d-block mt-2">
           <h3>
