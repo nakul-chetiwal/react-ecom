@@ -3,7 +3,6 @@ import * as actionTypes from "./shopping-types";
 const INITIAL_STATE = {
   products: [],
   cart: [],
-  currentItem: null,
 };
 
 const shopReducer = (state = INITIAL_STATE, action) => {
@@ -33,7 +32,22 @@ const shopReducer = (state = INITIAL_STATE, action) => {
             )
           : [...state.cart, { ...item, qty: 1 }],
       };
-
+    case actionTypes.ADJUST_ITEM_QTY:
+      if (action.payload.qty == 0) {
+        return {
+          ...state,
+          cart: state.cart.filter((item) => item.id !== action.payload.id),
+        };
+      } else {
+        return {
+          ...state,
+          cart: state.cart.map((item) =>
+            item.id === action.payload.id
+              ? { ...item, qty: +action.payload.qty }
+              : item
+          ),
+        };
+      }
     default:
       return state;
   }

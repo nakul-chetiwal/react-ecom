@@ -18,3 +18,14 @@ export const addToCart = (itemID) => {
     },
   };
 };
+
+//increment - decrement qty on the cart
+export const adjustItemQty = (itemID, qty) => {
+  return {
+    type: actionTypes.ADJUST_ITEM_QTY,
+    payload: {
+      id: itemID,
+      qty,
+    },
+  };
+};
