@@ -19,7 +19,12 @@ const Product = ({ product, addToCart }) => {
     setSelectedAttributes((prevSelectedAttributes) => {
       return [
         ...prevSelectedAttributes,
-        { key: e.target.name, name: e.target.name, value: e.target.value },
+        {
+          key: e.target.name,
+          name: e.target.name,
+          type: e.target.dataset.attributetype,
+          value: e.target.value,
+        },
       ];
     });
   };
@@ -50,9 +55,16 @@ const Product = ({ product, addToCart }) => {
                             type="radio"
                             name={attribute.name}
                             value={item.value}
+                            data-attributetype={attribute.type}
                             onChange={onRadioChangeHandler}
                           />
-                          <span>{item.displayValue}</span>
+                          {attribute.type == "swatch" ? (
+                            <span
+                              style={{ backgroundColor: item.value }}
+                            ></span>
+                          ) : (
+                            <span>{item.value}</span>
+                          )}
                         </label>
                       ))}
                     </div>
