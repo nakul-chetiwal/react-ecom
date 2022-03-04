@@ -13,9 +13,7 @@ import MainLayout from "./layouts/MainLayout";
 
 //pages
 import Homepage from "./Pages/Homepage";
-import Women from "./Pages/Women";
-import Men from "./Pages/Men";
-import Kids from "./Pages/Kids";
+import ProductList from "./Pages/ProductList";
 import Cart from "./Pages/Cart";
 import Checkout from "./Pages/Checkout";
 import ProductDetails from "./Pages/ProductDetails";
@@ -23,6 +21,7 @@ import Header from "./components/Header";
 
 //css
 import "./default.scss";
+
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
     graphQLErrors.map((message, location, path) => {
@@ -46,18 +45,17 @@ const client = new ApolloClient({
 function App() {
   return (
     <div className="App">
-<ApolloProvider client={client}>
+      <ApolloProvider client={client}>
         <MainLayout>
           <Router>
             <Header />
             <Routes>
               <Route exact path="/" element={<Homepage />} />
-              <Route path="/women" element={<Women />} />
-              <Route path="/men" element={<Men />} />
-              <Route path="/kids" element={<Kids />} />
+              <Route path="/:catID" element={<ProductList />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/product/:productID" element={<ProductDetails />} />
+              <Route path="*" element={<Homepage />} />
             </Routes>
           </Router>
         </MainLayout>

@@ -7,8 +7,12 @@ import "./style.scss";
 import { connect } from "react-redux";
 import { setAllProducts } from "../../redux/Shopping/shopping-actions";
 
-const Men = ({ props, setAllProducts }) => {
-  const { data } = useQuery(LOAD_ALL_PRODUCTS);
+const ProductList = ({ setAllProducts }) => {
+  const { loading, error, data } = useQuery(LOAD_ALL_PRODUCTS, {
+    variables: {
+      input: { title: "clothes" },
+    },
+  });
   const [products, setProducts] = useState([]);
   useEffect(() => {
     if (data) {
@@ -16,6 +20,8 @@ const Men = ({ props, setAllProducts }) => {
       setAllProducts(data.category.products);
     }
   }, [data]);
+  if (loading) return null;
+  if (error) return `Error! ${error}`;
   return (
     <section className="section-products">
       <div className="wrapper">
@@ -47,4 +53,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Men);
+export default connect(null, mapDispatchToProps)(ProductList);
