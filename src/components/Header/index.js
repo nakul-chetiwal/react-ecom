@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./style.scss";
 import logo from "./../../assets/logo.png";
+import MiniCart from "../MiniCart";
 
 import { connect } from "react-redux";
 
 const Header = ({ cart }) => {
   const [cartCount, setCartCount] = useState(0);
+  const [showMiniCart, setShowMiniCart] = useState(0);
 
   useEffect(() => {
     let count = 0;
@@ -17,6 +19,9 @@ const Header = ({ cart }) => {
     setCartCount(count);
   }, [cart, cartCount]);
 
+  const showMiniCartHandler = () => {
+    setShowMiniCart(showMiniCart == 0 ? 1 : 0);
+  };
   return (
     <header className="header">
       <div className="container">
@@ -56,14 +61,18 @@ const Header = ({ cart }) => {
         <div className="actions">
           <ul>
             <li>
-              <NavLink
-                to="/cart"
+              <a
                 className="cart"
                 aria-label="View your shopping cart"
+                onClick={showMiniCartHandler}
               >
                 <i className="fas fa fa-shopping-cart fa-lg"></i>
                 <span className="badge"> {cartCount} </span>
-              </NavLink>
+              </a>
+              <MiniCart
+                onVeiwBagData={showMiniCartHandler}
+                showMiniCart={showMiniCart}
+              />
             </li>
           </ul>
         </div>

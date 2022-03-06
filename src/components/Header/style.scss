@@ -35,6 +35,10 @@
         margin: 0 1rem;
         list-style-type: none;
 
+        &:first-child {
+          margin: 0;
+        }
+
         a {
           font-size: 1.8rem;
           line-height: 6.5rem;
@@ -62,6 +66,7 @@
     li {
       margin: 0;
       padding: 0;
+      float: right;
     }
 
     li {
@@ -101,3 +106,11 @@
     }
   }
 }
+
+/*
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+*/
