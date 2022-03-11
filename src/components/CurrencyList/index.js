@@ -29,7 +29,7 @@ const CurrencyList = ({
   return (
     <div>
       <div
-        className="overlay"
+        className="currency-dropdown"
         style={{ display: showCurrencyList ? "block" : "none" }}
       >
         <div className="container">
