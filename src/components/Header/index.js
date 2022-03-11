@@ -78,7 +78,10 @@ const Header = ({ cart, currency }) => {
                   >
                     {currency.symbol}
                   </a>
-                  <CurrencyList showCurrencyList={showCurrencyList} />
+                  <CurrencyList
+                    showCurrencyList={showCurrencyList}
+                    setShowCurrencyList={setShowCurrencyList}
+                  />
                 </li>
                 <li>
                   <a
