@@ -43,8 +43,7 @@ const ProductListCard = ({ product, addToCart, currency }) => {
           <Link to={`/product/${id}`}>{name}</Link>
         </span>
         <span className="fw-bolder d-block">
-          {sym.currency.symbol}
-          {sym.amount}
+          {sym.currency.symbol} {sym.amount}
         </span>
       </div>
     </div>
