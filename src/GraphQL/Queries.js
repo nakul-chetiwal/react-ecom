@@ -59,3 +59,11 @@ export const LOAD_PRODUCT_DETAILS = gql`
     }
   }
 `;
+export const CURRENCIES = gql`
+  query {
+    currencies {
+      symbol
+      label
+    }
+  }
+`;

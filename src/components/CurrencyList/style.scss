@@ -1,0 +1,18 @@
+.currency-list {
+  float: right;
+  background: white;
+  width: 120px;
+  height: 200px;
+  margin-right: 60px;
+  li {
+    width: 100%;
+    margin: 0 !important;
+    padding: 10px !important;
+    display: block;
+    cursor: pointer;
+
+    &:hover {
+      background: #8f9192;
+    }
+  }
+}
