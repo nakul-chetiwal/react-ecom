@@ -36,7 +36,11 @@ Following is the list of packages installed during the development.
 # Screenshots
 
 ![PLP](https://user-images.githubusercontent.com/97463843/157974064-32187f89-077f-4581-a0d0-ac874d3085b0.png)
+
 ![PDP](https://user-images.githubusercontent.com/97463843/157974102-d5e64cff-a7eb-4a08-9f24-f03933b410a7.png)
-![CartPage](https://user-images.githubusercontent.com/97463843/157974122-b4f072eb-c71d-4659-a620-a3e1c1472d45.png)
+
 ![Currency](https://user-images.githubusercontent.com/97463843/157974144-faed5ef8-06af-4c2c-8cb4-a617dd913d28.png)
+
 ![MiniCart](https://user-images.githubusercontent.com/97463843/157974158-c67dd533-9dff-4dbb-8250-9f72905c0444.png)
+
+![CartPage](https://user-images.githubusercontent.com/97463843/157974122-b4f072eb-c71d-4659-a620-a3e1c1472d45.png)
