@@ -63,6 +63,19 @@ const shopReducer = (state = INITIAL_STATE, action) => {
           ),
         };
       }
+    case actionTypes.ADJUST_ATTRIBUTE_VALUE:
+      return {
+        ...state,
+        cart: state.cart.map((item) =>
+          item.id === action.payload.id
+            ? item.attributes.find(
+                (attribute) => attribute.id === action.payload.attributeId
+              )
+              ? { ...item, value: action.payload.attributeValue }
+              : item
+            : item
+        ),
+      };
     case actionTypes.SET_CURRENCY:
       return {
         ...state,

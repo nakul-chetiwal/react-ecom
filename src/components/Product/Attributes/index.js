@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import "./style.scss";
 
-const Attributes = (props) => {
-  const attributes = props.attributes;
-  const cartSelectedAttributes = props.cartSelectedAttributes
-    ? props.cartSelectedAttributes
-    : {};
+import { connect } from "react-redux";
+import { adjustAttributeValue } from "../../../redux/Shopping/shopping-actions";
+
+const Attributes = ({
+  productId,
+  attributes,
+  cartSelectedAttributes = {},
+  onChangeAttribute,
+  adjustAttributeValue,
+}) => {
   let defaultAttribute = {};
 
   if (attributes.length) {
-    let defaultKey = props.productId + "-" + attributes[0].id;
+    let defaultKey = productId + "-" + attributes[0].id;
     defaultKey = defaultKey.split(" ").join("-");
     defaultAttribute[defaultKey] = {
       key: attributes[0].id,
@@ -31,26 +36,28 @@ const Attributes = (props) => {
       };
       return selectedAttributes;
     });
-    props.onChangeAttribute(selectedAttributes);
+    onChangeAttribute(selectedAttributes);
+
+    if (Object.keys(cartSelectedAttributes).length) {
+      adjustAttributeValue(productId, e.target.name, e.target.value);
+    }
   };
 
   const inCartSelectedAttributes = (attName, attValue) => {
-    let radioName = props.productId + "-" + attName;
+    let radioName = productId + "-" + attName;
     radioName = radioName.split(" ").join("-");
     return Object.keys(cartSelectedAttributes).length
       ? cartSelectedAttributes[radioName].value === attValue
       : false;
   };
-  // debugger;
-  console.log(111);
-  console.log(Object.keys(cartSelectedAttributes).length);
+
   return (
     <div>
       {attributes.map((attribute) => (
         <div className="d-block mt-5" key={attribute.id}>
           <h3 className="text-uppercase">{attribute.name}</h3>
           {attribute.items.map((item, i) => {
-            let radioName = props.productId + "-" + attribute.name;
+            let radioName = productId + "-" + attribute.name;
             radioName = radioName.split(" ").join("-");
             if (
               (Object.keys(cartSelectedAttributes).length &&
@@ -99,4 +106,11 @@ const Attributes = (props) => {
   );
 };
 
-export default Attributes;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    adjustAttributeValue: (itemID, attributeId, attributeValue) =>
+      dispatch(adjustAttributeValue(itemID, attributeId, attributeValue)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Attributes);
