@@ -36,10 +36,21 @@ const link = from([
     uri: "http://localhost:4000/",
   }),
 ]);
+const defaultOptions = {
+  watchQuery: {
+    fetchPolicy: "no-cache",
+    errorPolicy: "ignore",
+  },
+  query: {
+    fetchPolicy: "no-cache",
+    errorPolicy: "all",
+  },
+};
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: link,
+  defaultOptions: defaultOptions,
 });
 
 function App() {
