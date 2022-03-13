@@ -9,7 +9,9 @@ const ProductListCard = ({ product, addToCart, currency }) => {
   const { id, name, gallery, prices, attributes, inStock } = product;
   let selectedAttributes = [];
   attributes.map((attribute) => {
-    selectedAttributes.push({
+    let defaultKey = product.id + "-" + attribute.id;
+    defaultKey = defaultKey.split(" ").join("-");
+    return (selectedAttributes[defaultKey] = {
       key: attribute.id,
       name: attribute.name,
       type: attribute.type,
